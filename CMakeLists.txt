@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-project(clay_examples_introducing_clay_video_demo C)
+project(clay_ui C)
 set(CMAKE_C_STANDARD 99)
 
 # Adding Raylib
@@ -19,8 +19,12 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(raylib)
 
 # Adding our source files
-file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.c") # Define PROJECT_SOURCES as a list of all source files
-set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/src/") # Define PROJECT_INCLUDE to be the path to the include directory of the project
+file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.c")
+list(REMOVE_ITEM PROJECT_SOURCES "${CMAKE_CURRENT_LIST_DIR}/src/clay/clay_renderer_raylib.c")
+
+message(${PROJECT_SOURCES})
+
+set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/src/")
 
 add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES})
