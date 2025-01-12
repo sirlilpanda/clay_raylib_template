@@ -12,7 +12,7 @@ this template is currently only tested on windows with `minGW`.
 ```ps1
 > mkdir build
 > cd build
-> cmake ..
+> cmake .. -G "MinGW Makefiles"
 > cd ..
 > cmake --build build/
 # to run 
